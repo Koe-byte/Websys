@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Dev Scaffolding & Client Requirement Exam Simulator</title>
+  <meta name="description" content="Exam conditioning simulator for junior web developers to master client brief analysis, semantic HTML5 scaffolding, CSS architecture, and requirement sufficiency.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-ide">
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Sticky Top Header Navigation -->
+  <header class="app-header" id="app-header">
+    <div class="header-inner container">
+      <div class="brand-group">
+        <div class="terminal-badge">
+          <span class="status-dot"></span>
+          <span class="badge-text">W3C SPEC COND</span>
+        </div>
+        <div class="brand-titles">
+          <h1 class="brand-name">DevScaffold<span class="accent-dot">.io</span></h1>
+          <span class="brand-sub">Client Brief & Architecture Simulator</span>
+        </div>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#mindset-module" class="nav-link"><span class="nav-num">01</span> Rules</a></li>
+          <li><a href="#matrix-module" class="nav-link"><span class="nav-num">02</span> Audit Matrix</a></li>
+          <li><a href="#standards-module" class="nav-link"><span class="nav-num">03</span> Cheatsheet</a></li>
+          <li><a href="#essay-module" class="nav-link"><span class="nav-num">04</span> Essay Blueprint</a></li>
+          <li><a href="#drills-module" class="nav-link active"><span class="nav-num">05</span> Mock Drills</a></li>
+        </ul>
+      </nav>
+
+      <!-- Global Controls / Exam Mode -->
+      <div class="header-actions">
+        <div class="exam-toggle-wrapper" title="Exam Mode hides model answers to test your own reasoning first">
+          <label class="switch-control" for="exam-mode-toggle">
+            <input type="checkbox" id="exam-mode-toggle" class="switch-input" aria-label="Toggle Exam Mode">
+            <span class="switch-slider"></span>
+          </label>
+          <span class="exam-label"><span class="shield-icon">🛡️</span> Exam Mode: <strong id="exam-status-text">OFF</strong></span>
+        </div>
+
+        <button id="btn-export-all" class="btn btn-outline-sm" title="Export answers to Markdown">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Mode Notification Bar -->
+    <div id="exam-mode-banner" class="exam-mode-banner hidden">
+      <div class="banner-inner container">
+        <span class="pulse-indicator"></span>
+        <span><strong>EXAM MODE ACTIVE:</strong> Model answers, rubrics, and traps are strictly locked behind self-drafted submissions. Commit your answer before revealing benchmarks.</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content container">
+
+    <!-- Hero Mission Statement -->
+    <section class="hero-section" id="hero-overview">
+      <div class="hero-card">
+        <div class="hero-tag">ENGINEERING PROTOCOL // LEVEL 1 EVALUATION</div>
+        <h2 class="hero-title">Refuse to Guess. Analyze Constraints. Scaffold Standards.</h2>
+        <p class="hero-lead">
+          In high-stakes technical exams and real-world client briefs, junior developers fail by inventing unstated requirements or writing premature code syntax. This simulator conditions you to audit client ambiguity, assess requirement sufficiency (<em>"Is it enough? Why / Why not?"</em>), and architect semantic, accessible W3C layouts without guessing.
+        </p>
+
+        <div class="stats-ribbon">
+          <div class="stat-pill">
+            <span class="stat-num" id="stat-scenarios-count">2</span>
+            <span class="stat-desc">Full Drill Scenarios</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num" id="stat-questions-count">10</span>
+            <span class="stat-desc">Conditioning Questions</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num" id="stat-completed-count">0/10</span>
+            <span class="stat-desc">Drafted Responses</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num text-amber" id="stat-score-percent">0%</span>
+            <span class="stat-desc">Self-Assessment Score</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 1: Junior Dev Non-Negotiable Mindset -->
+    <section class="module-section" id="mindset-module">
+      <div class="section-header">
+        <div class="section-badge"><span class="badge-idx">MODULE 01</span> CORE AXIOMS</div>
+        <h2 class="section-title">The Non-Negotiable Junior Dev Mindset</h2>
+        <p class="section-subtitle">Three unbreakable rules for analyzing software specifications and exam scenarios.</p>
+      </div>
+
+      <div class="grid-three">
+        <!-- Rule 1 -->
+        <article class="card card-rule" data-rule="zero-hallucination">
+          <div class="rule-icon-box text-crimson">
+            <svg class="rule-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+            <span class="rule-num">RULE 01</span>
+          </div>
+          <h3 class="card-title">"Zero Hallucination" Rule</h3>
+          <p class="card-desc"><strong>Never assume, invent, or extrapolate features.</strong> If the client does not explicitly ask for a shopping cart, login authentication, payment gateway, or database, they are strictly non-existent.</p>
+          <div class="rule-callout fail-callout">
+            <div class="callout-label">❌ Exam Failure Trigger:</div>
+            <p>"I will add an Add to Cart button and a sticky customer login popup so users can save favorites."</p>
+          </div>
+          <div class="rule-callout pass-callout">
+            <div class="callout-label">✅ Senior-Approved Response:</div>
+            <p>"The brief specifies an informational showcase only. Transactional e-commerce or user state management is out of scope."</p>
+          </div>
+        </article>
+
+        <!-- Rule 2 -->
+        <article class="card card-rule" data-rule="enough-test">
+          <div class="rule-icon-box text-amber">
+            <svg class="rule-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span class="rule-num">RULE 02</span>
+          </div>
+          <h3 class="card-title">The "Enough vs. Not Enough" Test</h3>
+          <p class="card-desc"><strong>Clients speak in subjective feelings; engineers evaluate hard constraints.</strong> When a client asks for "modern, clean, warm vibes", you must declare the requirement <em>insufficient</em> for CSS coding until exact metrics exist.</p>
+          <div class="rule-callout fail-callout">
+            <div class="callout-label">❌ Amateur Developer:</div>
+            <p>"I'll choose warm earthy brown hex codes (#8B4513) because they said warm cafe vibes."</p>
+          </div>
+          <div class="rule-callout pass-callout">
+            <div class="callout-label">✅ Junior Engineer:</div>
+            <p>"NOT ENOUGH. Vague aesthetic descriptors lack hex color codes, typography hierarchy, and WCAG contrast targets."</p>
+          </div>
+        </article>
+
+        <!-- Rule 3 -->
+        <article class="card card-rule" data-rule="semantics-first">
+          <div class="rule-icon-box text-sky">
+            <svg class="rule-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <span class="rule-num">RULE 03</span>
+          </div>
+          <h3 class="card-title">Semantics Over Appearance</h3>
+          <p class="card-desc"><strong>Tags dictate document meaning and accessibility tree structure, not default visual styling.</strong> A <code>&lt;button&gt;</code> is for actions; an <code>&lt;a&gt;</code> is for navigation; a <code>&lt;section&gt;</code> requires a heading; never use a <code>&lt;div&gt;</code> soup.</p>
+          <div class="rule-callout fail-callout">
+            <div class="callout-label">❌ Div Soup Trap:</div>
+            <p>Using <code>&lt;div class="header-box"&gt;&lt;div class="nav-btn" onclick="..."&gt;</code> for navigation.</p>
+          </div>
+          <div class="rule-callout pass-callout">
+            <div class="callout-label">✅ Clean Semantic Tree:</div>
+            <p><code>&lt;header&gt;&lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="#menu"&gt;</code> with proper keyboard accessibility and landmark roles.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULE 2: The "Is It Enough?" Audit Matrix -->
+    <section class="module-section" id="matrix-module">
+      <div class="section-header">
+        <div class="section-badge"><span class="badge-idx">MODULE 02</span> REQUIREMENT AUDIT ENGINE</div>
+        <h2 class="section-title">The "Is It Enough?" Audit Matrix</h2>
+        <p class="section-subtitle">Click each dimension to evaluate whether a client's specification is technically actionable or dangerously incomplete.</p>
+      </div>
+
+      <div class="audit-matrix-grid">
+        <!-- Matrix Item 1 -->
+        <div class="accordion-card active" data-matrix-id="hierarchy">
+          <button class="accordion-trigger" aria-expanded="true">
+            <div class="trigger-left">
+              <span class="matrix-pill">DIMENSION 1</span>
+              <h3 class="matrix-title">Content Hierarchy & Information Priority</h3>
+            </div>
+            <span class="accordion-icon">▾</span>
+          </button>
+          <div class="accordion-body">
+            <div class="matrix-content-split">
+              <div class="matrix-col">
+                <div class="col-heading text-amber">The Core Test Question</div>
+                <p>Does the client state primary vs. secondary focus, or just dump a wish list of items?</p>
+                <div class="mini-spec-box">
+                  <strong>Client Clue:</strong> "Show our 12 drinks, 6 pastries, story, address, and awards on one page."
+                </div>
+              </div>
+              <div class="matrix-col">
+                <div class="col-heading text-sky">Engineering Sufficiency Analysis</div>
+                <p><strong>Verdict: Incomplete Hierarchy.</strong> The client provides content items but fails to define whether the Menu or the Physical Location is the primary conversion priority above the fold.</p>
+                <p><strong>Action:</strong> Scaffold separate semantic <code>&lt;section&gt;</code> landmarks with descending <code>&lt;h2&gt;</code> headings; do not merge them into an unstructured grid.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matrix Item 2 -->
+        <div class="accordion-card" data-matrix-id="viewports">
+          <button class="accordion-trigger" aria-expanded="false">
+            <div class="trigger-left">
+              <span class="matrix-pill">DIMENSION 2</span>
+              <h3 class="matrix-title">Target Viewports & Responsive Adaptation</h3>
+            </div>
+            <span class="accordion-icon">▾</span>
+          </button>
+          <div class="accordion-body">
+            <div class="matrix-content-split">
+              <div class="matrix-col">
+                <div class="col-heading text-amber">The Core Test Question</div>
+                <p>Did they mention mobile users, touch targets, screen sizes, or device constraints?</p>
+                <div class="mini-spec-box">
+                  <strong>Client Clue:</strong> "People on their phones should easily find our address and operating schedule."
+                </div>
+              </div>
+              <div class="matrix-col">
+                <div class="col-heading text-sky">Engineering Sufficiency Analysis</div>
+                <p><strong>Verdict: Partial Sufficiency.</strong> The intent (mobile accessibility) is stated, but breakpoint values, layout rearrangement rules, and touch sizes are unspecified.</p>
+                <p><strong>Action:</strong> Apply <em>Mobile-First CSS</em> architecture. Stack essential contact data above heavy media catalogs or provide sticky anchor links. Ensure 44x44px minimum touch targets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matrix Item 3 -->
+        <div class="accordion-card" data-matrix-id="forms">
+          <button class="accordion-trigger" aria-expanded="false">
+            <div class="trigger-left">
+              <span class="matrix-pill">DIMENSION 3</span>
+              <h3 class="matrix-title">Form & Interaction Specs</h3>
+            </div>
+            <span class="accordion-icon">▾</span>
+          </button>
+          <div class="accordion-body">
+            <div class="matrix-content-split">
+              <div class="matrix-col">
+                <div class="col-heading text-amber">The Core Test Question</div>
+                <p>Are exact form fields, required labels, validation states, and submission endpoints defined?</p>
+                <div class="mini-spec-box">
+                  <strong>Client Clue:</strong> "Customers should be able to get in touch with our support team."
+                </div>
+              </div>
+              <div class="matrix-col">
+                <div class="col-heading text-sky">Engineering Sufficiency Analysis</div>
+                <p><strong>Verdict: Severe Insufficiency.</strong> "Get in touch" could mean a <code>mailto:</code> link, a tel link, a 3-field contact form, or live chat.</p>
+                <p><strong>Action:</strong> Never invent a database-backed contact form with CAPTCHA without explicit confirmation. If asked to scaffold, provide standard accessible <code>&lt;form&gt;&lt;label for="..."&gt;</code> without unstated fields.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matrix Item 4 -->
+        <div class="accordion-card" data-matrix-id="media">
+          <button class="accordion-trigger" aria-expanded="false">
+            <div class="trigger-left">
+              <span class="matrix-pill">DIMENSION 4</span>
+              <h3 class="matrix-title">Media, Visual Assets & Performance Budgets</h3>
+            </div>
+            <span class="accordion-icon">▾</span>
+          </button>
+          <div class="accordion-body">
+            <div class="matrix-content-split">
+              <div class="matrix-col">
+                <div class="col-heading text-amber">The Core Test Question</div>
+                <p>Are aspect ratios, image formats, bandwidth limits, or text contrast constraints stated?</p>
+                <div class="mini-spec-box">
+                  <strong>Client Clue:</strong> "Must be fully readable for senior citizens on low-cost smartphones on mobile data."
+                </div>
+              </div>
+              <div class="matrix-col">
+                <div class="col-heading text-sky">Engineering Sufficiency Analysis</div>
+                <p><strong>Verdict: User Persona Clear, Technical Specs Insufficient.</strong> The client highlighted constraints (seniors + low bandwidth), but didn't specify file formats or font sizing.</p>
+                <p><strong>Action:</strong> Implement system fonts over heavy custom web font CDNs, use SVG vector icons, enforce <code>font-size: 1rem+</code> with generous <code>line-height: 1.5+</code>, and WCAG AA contrast.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Client Pushback Template -->
+      <div class="template-callout-box">
+        <div class="template-header">
+          <span class="template-icon">💬</span>
+          <h3 class="template-heading">Junior Dev Script: How to Argue Insufficiency Without Sounding Clueless</h3>
+          <button class="btn btn-copy-inline" data-copy-target="#client-pushback-text">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy Script
+          </button>
+        </div>
+        <div class="code-quote-block" id="client-pushback-text">
+"While the client has articulated the high-level aesthetic intent ('warm, modern, clean') and user context, the requirement is <strong>technically insufficient</strong> to commence visual CSS styling. Specifically, the brief lacks:
+1) An established brand color palette with verified WCAG 2.1 AA/AAA contrast ratios.
+2) Specific typography scale and responsive breakpoint definitions.
+3) Exact media aspect ratios and submission endpoints.
+Proceeding with arbitrary color selection risks costly visual refactors. We recommend locking the semantic HTML document outline first while requesting an approved brand asset sheet."
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 3: Standards & Architecture Reference (Cheat Sheet) -->
+    <section class="module-section" id="standards-module">
+      <div class="section-header">
+        <div class="section-badge"><span class="badge-idx">MODULE 03</span> W3C CHEAT SHEET</div>
+        <h2 class="section-title">Standards & Architecture Reference</h2>
+        <p class="section-subtitle">Deep dive into semantic markup, 1D vs 2D layout mechanics, box model physics, and responsive units.</p>
+      </div>
+
+      <div class="tabs-container" id="standards-tabs">
+        <div class="tabs-nav" role="tablist" aria-label="Standards Architecture Tabs">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-semantics" id="tab-btn-semantics">
+            <span class="tab-icon">&lt;/&gt;</span> Semantic Scaffolding
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-layout" id="tab-btn-layout">
+            <span class="tab-icon">📐</span> Layout: Flexbox vs Grid
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-boxmodel" id="tab-btn-boxmodel">
+            <span class="tab-icon">📦</span> Box Model & Sizing
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-responsive" id="tab-btn-responsive">
+            <span class="tab-icon">📱</span> Responsive Foundations
+          </button>
+        </div>
+
+        <div class="tab-panels">
+          <!-- TAB 1: Semantics -->
+          <div class="tab-panel active" id="tab-semantics" role="tabpanel" aria-labelledby="tab-btn-semantics">
+            <div class="standards-grid">
+              <div class="spec-card">
+                <div class="spec-tag text-sky">W3C LANDMARKS</div>
+                <h4 class="spec-title">Structural Document Landmarks</h4>
+                <p class="spec-text">Each page should have a single <code>&lt;main&gt;</code> element representing central content. Landmarks enable screen reader users to jump directly to sections.</p>
+                <div class="code-tree">
+                  <div class="tree-line"><code>&lt;header&gt;</code> <span class="tree-desc">&rarr; Logo, Branding, Site-wide Navigation</span></div>
+                  <div class="tree-line indent-1"><code>&lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a&gt;</code> <span class="tree-desc">&rarr; Accessible list of anchor links</span></div>
+                  <div class="tree-line"><code>&lt;main&gt;</code> <span class="tree-desc">&rarr; Exactly ONE primary content container</span></div>
+                  <div class="tree-line indent-1"><code>&lt;section&gt;&lt;h2&gt;</code> <span class="tree-desc">&rarr; Thematic block (MUST have a heading!)</span></div>
+                  <div class="tree-line indent-1"><code>&lt;article&gt;</code> <span class="tree-desc">&rarr; Self-contained, syndicateable unit</span></div>
+                  <div class="tree-line indent-1"><code>&lt;aside&gt;</code> <span class="tree-desc">&rarr; Tangentially related side content</span></div>
+                  <div class="tree-line"><code>&lt;footer&gt;</code> <span class="tree-desc">&rarr; Copyright, operating hours, legal</span></div>
+                </div>
+              </div>
+
+              <div class="spec-card">
+                <div class="spec-tag text-amber">FORM ACCESSIBILITY</div>
+                <h4 class="spec-title">Explicit Form Controls</h4>
+                <p class="spec-text">Every input MUST have a programmatic label association using matching <code>for</code> and <code>id</code> attributes.</p>
+                <div class="code-snippet">
+                  <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="client-name"&gt;Full Name&lt;/label&gt;
+    &lt;input type="text" id="client-name" name="name" required&gt;
+  &lt;/div&gt;
+  &lt;button type="submit"&gt;Submit Inquiry&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <div class="spec-note text-amber">
+                  ⚠️ <strong>Rule:</strong> Placeholder is NOT a replacement for a <code>&lt;label&gt;</code>. Screen readers and users with cognitive fatigue rely on persistent labels.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Flexbox vs Grid -->
+          <div class="tab-panel" id="tab-layout" role="tabpanel" aria-labelledby="tab-btn-layout">
+            <div class="standards-grid">
+              <div class="spec-card">
+                <div class="spec-tag text-sky">FLEXBOX (1D LINEAR)</div>
+                <h4 class="spec-title">When to Choose CSS Flexbox</h4>
+                <ul class="spec-bullets">
+                  <li><strong>Dimension:</strong> One-dimensional (Row OR Column alignment).</li>
+                  <li><strong>Content-Driven:</strong> Items size according to their internal text/content rather than strict grid tracks.</li>
+                  <li><strong>Ideal Use Cases:</strong>
+                    <ul>
+                      <li>Navigation bars (<code>display: flex; justify-content: space-between;</code>)</li>
+                      <li>Button groups, badge clusters, breadcrumbs</li>
+                      <li>Internal card alignment (avatar + text title + button on one line)</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="spec-card">
+                <div class="spec-tag text-emerald">CSS GRID (2D MATRIX)</div>
+                <h4 class="spec-title">When to Choose CSS Grid</h4>
+                <ul class="spec-bullets">
+                  <li><strong>Dimension:</strong> Two-dimensional (Rows AND Columns simultaneously).</li>
+                  <li><strong>Layout-Driven:</strong> Tracks dictate item placement and uniform sizing across the catalog.</li>
+                  <li><strong>Ideal Use Cases:</strong>
+                    <ul>
+                      <li>Catalogs (e.g. 12 coffee drinks + 6 pastries in auto-fit cards)</li>
+                      <li>Overall page layouts (header / sidebar / main / footer)</li>
+                      <li>Doctor schedule tables or calendar time slots</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="spec-summary-banner">
+              <strong>Architectural Rule of Thumb:</strong> Use <strong>CSS Grid</strong> for the macro container (e.g., catalog grid of menu cards), and <strong>Flexbox</strong> for micro alignments inside each individual card!
+            </div>
+          </div>
+
+          <!-- TAB 3: Box Model -->
+          <div class="tab-panel" id="tab-boxmodel" role="tabpanel" aria-labelledby="tab-btn-boxmodel">
+            <div class="box-model-interactive">
+              <div class="box-diagram-wrapper">
+                <div class="box-layer layer-margin">
+                  <span class="layer-title">MARGIN (External Spacing)</span>
+                  <div class="box-layer layer-border">
+                    <span class="layer-title">BORDER (Stroke Edge)</span>
+                    <div class="box-layer layer-padding">
+                      <span class="layer-title">PADDING (Internal Touch Target Space)</span>
+                      <div class="box-layer layer-content">
+                        <span class="layer-title">CONTENT (Text, Image)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-model-explanations">
+                <div class="spec-card">
+                  <div class="spec-tag text-sky">BOX SIZING FORMULA</div>
+                  <h4 class="spec-title"><code>box-sizing: border-box</code></h4>
+                  <p class="spec-text">Standard CSS reset rule. When specified, <code>width: 300px</code> includes padding and border. Without it (<code>content-box</code>), adding 20px padding expands the total element width to 340px, triggering mobile horizontal scrollbars!</p>
+                  <div class="code-snippet">
+                    <pre><code>*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: Responsive -->
+          <div class="tab-panel" id="tab-responsive" role="tabpanel" aria-labelledby="tab-btn-responsive">
+            <div class="standards-grid">
+              <div class="spec-card">
+                <div class="spec-tag text-emerald">MOBILE-FIRST MINDSET</div>
+                <h4 class="spec-title">Linear Flow Before Media Queries</h4>
+                <p class="spec-text">Write default CSS for small viewports (320px–480px) first, ensuring natural document flow without horizontal scrolling. Then use <code>@media (min-width: 768px)</code> to enhance to multi-column grids.</p>
+                <div class="code-snippet">
+                  <pre><code>/* Mobile base: 1 column */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Tablet & Desktop enhancement */
+@media (min-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="spec-card">
+                <div class="spec-tag text-sky">FLUID UNITS VS FIXED PIXELS</div>
+                <h4 class="spec-title">Unit Hierarchy</h4>
+                <ul class="spec-bullets">
+                  <li><strong><code>rem</code> (Root EM):</strong> For font sizes, margins, and padding. Scales automatically with user OS accessibility preferences.</li>
+                  <li><strong><code>%</code> and <code>vw/vh</code>:</strong> For fluid widths and hero heights.</li>
+                  <li><strong>Fixed <code>px</code>:</strong> Avoid for container widths. Use only for hair-line borders or tiny specific icon dimensions.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 4: The 4-Step Essay Writing Framework -->
+    <section class="module-section" id="essay-module">
+      <div class="section-header">
+        <div class="section-badge"><span class="badge-idx">MODULE 04</span> ESSAY BLUEPRINT</div>
+        <h2 class="section-title">The 4-Step Technical Essay Blueprint</h2>
+        <p class="section-subtitle">Use this battle-tested 4-step structure to score full points in technical exams and client design proposals.</p>
+      </div>
+
+      <div class="blueprint-grid">
+        <!-- Step 1 -->
+        <div class="blueprint-step-card" data-step="1">
+          <div class="step-num-badge">STEP 1</div>
+          <h3 class="step-title">Direct Technical Verdict</h3>
+          <p class="step-goal">Provide an immediate, unambiguous stance in your opening sentence. Do not waffle.</p>
+          <div class="step-formula">
+            <code>[Stance: SUFFICIENT / INSUFFICIENT / CSS GRID / REJECT] + [Core Technical Theme]</code>
+          </div>
+          <div class="step-example">
+            <em>"The client's specification is <strong>insufficient</strong> to commence visual CSS styling and color selection."</em>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="blueprint-step-card" data-step="2">
+          <div class="step-num-badge">STEP 2</div>
+          <h3 class="step-title">Scenario Clues & Evidence</h3>
+          <p class="step-goal">Cite the exact quotes or requirements explicitly present in the client's scenario.</p>
+          <div class="step-formula">
+            <code>"According to the scenario text, the client specifies..."</code>
+          </div>
+          <div class="step-example">
+            <em>"The brief states only that the cafe wants a 'warm, modern, and clean' look without providing a brand guide."</em>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="blueprint-step-card" data-step="3">
+          <div class="step-num-badge">STEP 3</div>
+          <h3 class="step-title">Standards & Architectural Rationale</h3>
+          <p class="step-goal">Explain the W3C semantics, box model physics, WCAG accessibility, or layout geometry that applies.</p>
+          <div class="step-formula">
+            <code>Cite W3C HTML5 semantics, 2D Grid vs 1D Flexbox, WCAG 2.1 AA contrast, or box-sizing rules.</code>
+          </div>
+          <div class="step-example">
+            <em>"Engineering standards require hex/HSL values tested against WCAG AA 4.5:1 contrast ratios before styling."</em>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="blueprint-step-card" data-step="4">
+          <div class="step-num-badge">STEP 4</div>
+          <h3 class="step-title">Risk & Failure Analysis</h3>
+          <p class="step-goal">Articulate what breaks if implemented poorly: layout collapse, accessibility violations, or scope creep.</p>
+          <div class="step-formula">
+            <code>"Failing to enforce this constraint leads to [Specific Technical Failure / Refactor Cost]."</code>
+          </div>
+          <div class="step-example">
+            <em>"Guessing palette colors leads to visual inconsistency and costly CSS refactors once true brand assets arrive."</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Box: Copy Markdown Template -->
+      <div class="essay-action-banner">
+        <div class="banner-text">
+          <strong>Ready to structure your own answer?</strong> Copy the universal markdown template into your notes or practice drills.
+        </div>
+        <button id="btn-copy-template" class="btn btn-primary">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy Markdown Template to Clipboard
+        </button>
+      </div>
+    </section>
+
+    <!-- MODULE 5: Full Mock Exam Drills (Questions 1 to 5) -->
+    <section class="module-section" id="drills-module">
+      <div class="section-header">
+        <div class="section-badge"><span class="badge-idx">MODULE 05</span> INTERACTIVE SIMULATOR</div>
+        <h2 class="section-title">Full Mock Exam Conditioning Drills</h2>
+        <p class="section-subtitle">Select a client scenario below, read the messy brief, and formulate your engineering response for Questions 1 to 5.</p>
+      </div>
+
+      <!-- Scenario Selector Tabs -->
+      <div class="scenario-selector-bar">
+        <div class="scenario-tabs-group" role="tablist" aria-label="Drill Scenarios">
+          <button class="scenario-tab-btn active" data-scenario="drill-1" id="tab-drill-1" role="tab" aria-selected="true">
+            <span class="scenario-badge">DRILL 01</span>
+            <span class="scenario-title">Artisan Coffee & Pastry Shop ("Kape Kultura")</span>
+          </button>
+          <button class="scenario-tab-btn" data-scenario="drill-2" id="tab-drill-2" role="tab" aria-selected="false">
+            <span class="scenario-badge">DRILL 02</span>
+            <span class="scenario-title">Barangay Health Clinic Portal ("Barangay 4")</span>
+          </button>
+        </div>
+
+        <div class="scenario-meta-info">
+          <span class="meta-pill"><span class="pulse-green"></span> Live Scenario Engine</span>
+          <button id="btn-clear-current-drill" class="btn btn-ghost-sm" title="Clear your typed drafts for this scenario">Reset Drafts</button>
+        </div>
+      </div>
+
+      <!-- Active Scenario Brief Box -->
+      <article class="scenario-brief-card" id="scenario-brief-container">
+        <div class="brief-header">
+          <div class="brief-title-wrap">
+            <span class="brief-chip" id="brief-scenario-chip">CLIENT BRIEF // DRILL 01</span>
+            <h3 class="brief-client-name" id="brief-client-name">Kape Kultura Specialty Cafe</h3>
+          </div>
+          <div class="brief-controls">
+            <button class="btn btn-outline-xs" id="btn-toggle-brief-highlighter" title="Toggle clue highlights in brief text">
+              💡 Highlight Key Clues
+            </button>
+          </div>
+        </div>
+
+        <div class="brief-body">
+          <div class="brief-quote-box" id="brief-quote-content">
+            <!-- Populated dynamically by JS -->
+          </div>
+          <div class="brief-constraints-summary" id="brief-constraints-list">
+            <!-- Quick tags -->
+          </div>
+        </div>
+      </article>
+
+      <!-- Questions List (1 to 5) for Active Scenario -->
+      <div class="questions-container" id="questions-list-container">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <!-- Overall Drill Progress & Summary Footer -->
+      <div class="drill-footer-card">
+        <div class="drill-footer-left">
+          <h4 class="drill-footer-title">Scenario Completion Summary</h4>
+          <p class="drill-footer-desc">Review your self-evaluated rubrics before proceeding to the next scenario.</p>
+        </div>
+        <div class="drill-footer-actions">
+          <button id="btn-mark-drill-complete" class="btn btn-success">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Mark Scenario Complete
+          </button>
+          <button id="btn-switch-scenario" class="btn btn-outline">
+            Next Scenario &rarr;
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky Footer -->
+  <footer class="app-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Junior Dev Scaffolding & Client Requirement Exam Simulator</strong>
+        <span class="footer-spec-ref">Built for W3C Semantic HTML5, Modern CSS Layouts & Zero-Hallucination Engineering</span>
+      </div>
+      <div class="footer-links">
+        <a href="#mindset-module">Mindset</a>
+        <span class="divider">&bull;</span>
+        <a href="#matrix-module">Audit Matrix</a>
+        <span class="divider">&bull;</span>
+        <a href="#standards-module">Cheatsheet</a>
+        <span class="divider">&bull;</span>
+        <a href="#drills-module">Mock Drills</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
